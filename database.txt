@@ -1,0 +1,87 @@
+Berikut adalah contoh desain database dengan 8 tabel dan 6 relasi untuk sistem informasi akademik (SIAKAD) sesuai dengan deskripsi yang diberikan:
+
+
+Tabel 1: Mahasiswa
+- id_mahasisw_id (primary key)
+- id_angkatan (foreign ke tabel angkatan)
+- id_jurusan (foreign ke tabel jurusan)
+- nama_mahasiswa
+- nim
+- alamat_mahasiswa
+- no_telepon_mhs
+- email
+- password
+
+Tabe 2: pengumuman
+- id_pengumuman (primary key)
+- id_mahasiswa (foreign ke tabel mahasiswa)
+- dokumen
+
+Tabel 3: Dosen
+- id_dosen (primary key)
+- nama_dosen
+- nip
+- alamat_dosen
+- no_telepon_dosen
+- password
+
+Tabel 4: Mata_Kuliah
+- id_mata_kuliah (primary key)
+- kode
+- nama_mata_kuliah
+- sks
+
+Tabel 5: KHS (Hasil Studi)
+- id_khs (primary key)
+- id_krs (foreign key ke tabel krs)
+- nilai
+- ip
+
+Tabel 6: Jadwal
+- id_jadwal (primary key)
+- id_mata_kuliah (foreign key ke tabel mata_kuliah)
+- id_dosen (foreign key ke tabel Dosen)
+- Kelas
+- Hari
+- jam
+- ruangan
+
+Tabel 7: KRS (Kartu Rencana Studi)
+- id_krs (primary key)
+- id_mahasiswa (foreign key ke tabel Mahasiswa)
+- id_jadwal (foreign key ke table jadwal)
+- status (diambil/tidak diambil)
+
+Tabel 8: Admin
+- id_admin (primary key)
+- nama_admin
+- alamat_admin
+- no_telepon_admin
+
+Tabel 9: Angkatan
+- id_angkatan (primary key)
+_ tahun_angkatan
+
+
+Relasi 1: User - Mahasiswa (one-to-one)
+Relasi 2: User - Dosen (one-to-one)
+Relasi 3: Mahasiswa - KHS (one-to-many)
+Relasi 4: Mahasiswa - KRS (one-to-many)
+Relasi 5: MataKuliah - KHS (one-to-many)
+Relasi 6: MataKuliah - Jadwal (one-to-many)
+
+Alur database sesuai dengan desain web yang diberikan:
+1. Pengguna melakukan login dengan username, password, dan captcha aritmatika untuk konfirmasi masuk.
+2. Sistem memverifikasi data login pengguna dan menentukan peran (admin/dosen/mahasiswa).
+3. Jika peran adalah admin, akses ke fitur admin.
+4. Jika peran adalah dosen, akses ke fitur dosen seperti mengedit nilai matakuliah dan melihat jadwal.
+5. Jika peran adalah mahasiswa, akses ke fitur mahasiswa seperti melihat KHS hasil studi semester lalu, jadwal seluruh mata kuliah beserta dosen pengampu dan ruangan yang digunakan, mengubah profil mahasiswa, dan mengubah password akun mahasiswa.
+6. Jika admin mengklik tombol "Open KRS", fitur KRS pada halaman mahasiswa akan diaktifkan.
+7. Mahasiswa dapat memilih mata kuliah yang ingin diambil beserta besar SKS pada semester yang akan dijalani.
+8. Setelah memilih, mahasiswa dapat men-submit KRS.
+9. Setelah KRS disubmit, pada halaman jadwal akan muncul tab baru berisi jadwal mata kuliah yang diambil oleh mahasiswa.
+10. Admin dapat menonaktifkan fitur KRS set
+
+elah proses seleksi selesai.
+
+Ini hanya contoh desain database dan alur yang sesuai dengan deskripsi yang diberikan. Pada implementasi nyata, dapat ada penyesuaian lebih lanjut tergantung pada kebutuhan sistem dan logika bisnis yang lebih spesifik.
